@@ -12,13 +12,23 @@
     height: 8em;
 }
 
+nav{
+    background-image: url(img/df48484992221a631a96a5a9f0e152c8.jpg);
+    background-size: cover;
+    background-position: 0%;
+    background-repeat: no-repeat;
+    padding-top: 40px;
+    padding-bottom: 260px;
+}
+
 .title{
     margin-top: 15px;
     text-align: left;
     padding: 2px;
     border: dotted 2.4px black;
     align-self: center;
-    /* margin-left: 10%; */
+    background: hsl(201, 71%, 58%);
+    
 }
 .title:hover{
     background-color: burlywood;
@@ -29,40 +39,12 @@
     font-family: 'Space Mono', monospace;
 }
 
-.navigation_bar{
-    
-}
-
-.navigation_bar >li{
-    display: inline-block;
-    list-style: none;
-    margin: 8px;
-    padding: 5px;
-    box-sizing: border-box;
-    /* border: groove skyblue 2px; */
-    flex: 1;    
-}
-
-.navigation_bar > li:hover{
-    text-decoration:underline 4px tomato;
-    
-}
-.navigation_bar li > a{
-    text-decoration: none;
-    color:black;
-    font-family: 'Space Mono', monospace;
-    font-size: 1.3em;
-}
-.navigation_bar > li > a:hover{
-    font-size: 1.4em;
-}
-
 .login{
     font-family: 'Space Mono', monospace;
     font-size: 1.4em;
     text-indent: 0em;
-    margin-top: 15px;
-    width: 14em;
+    background-color: burlywood;
+    margin-left: 56%;
 }
 
 .login p:hover{
@@ -98,6 +80,43 @@
     border-radius: 50px;
 }
 
+.navigation_bar{
+    background-color: burlywood;
+    text-align: center;
+    word-spacing: 100px;
+}
+
+.navigation_bar >li{
+    display: inline-block;
+    list-style: none;
+    margin: 8px;
+    padding: 5px;
+    box-sizing: border-box;
+    /* border: groove skyblue 2px; */
+    flex: 1;    
+}
+
+.navigation_bar > li:hover{
+    text-decoration:underline 4px tomato;
+    
+}
+.navigation_bar li > a{
+    text-decoration: none;
+    color:black;
+    font-family: 'Space Mono', monospace;
+    font-size: 1.3em;
+}
+.navigation_bar > li > a:hover{
+    font-size: 1.4em;
+}
+
+.slogan {
+    background-image: url(cloud.jpg);
+    background-repeat: repeat;
+    background-position: center;
+    background-size: 19em;
+    font-weight: bold;
+}
 
 .slogan p:nth-child(1){
     position: relative;
@@ -109,8 +128,11 @@
     position: relative;
     margin-left: 50%;
     font-size: 2em;
-    line-height: -2em;
+    /*line-height: -2em;*/
+}
 
+.material-symbols-outlined{
+    color: red;
 }
 
 .container{
@@ -119,13 +141,13 @@
     display: grid;
     grid-template-columns: auto auto; /* two columns */
     border: solid   black 3px;
-
 }
 
 .container > div{
     border: solid black 2px;
     height: 35em;
     text-align: center;
+    background-color: hsl(303, 100%, 95%);
 }
 
 .container > div > img{
@@ -151,16 +173,15 @@
     font-size: 1.1em;
 }
 
-
-
 .container .header {
     grid-column: 1 / span 2;
     font-size: 2em;
     font-style: oblique;
     font-stretch: expanded;
-    /* background-color: burlywood; */
+    background-color: burlywood;
     padding: 1.0em 0em 2.0em  0em ;
     height: 1.6em;
+    font-weight: bold;
 }
 
 .foot{
@@ -174,36 +195,28 @@
     width: 30%;
     border: 0;
     box-shadow: 0 0 1em rgb(0 0 0 / .3);
-  
-  }
-  
+}
 
-  
   /* extra styling */
 
-  
-  .button {
+.button {
     border: 0;
     cursor: pointer;
     background: var(--gray-8);
     color: var(--gray-2);
     font-weight: 700;
     padding: var(--size-2) var(--size-4);
-  }
-  
-  .button:hover,
-  .button:focus {
+}
+
+.button:hover,
+.button:focus {
     background: var(--cyan-9);
-  }
-  
-  form {
+}
+
+form {
     display: grid;
     gap: 0em;
-  }
-  
-
-
-
+}
 
 
 
