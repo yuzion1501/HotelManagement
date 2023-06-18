@@ -44,4 +44,4 @@ Clone this repo or download as zip and unzip it. Run Django server with `manage.
 <div style="page-break-after: always"></div>
 
 ## Demo
-> [link]
+> https://drive.google.com/file/d/1-4X_x6rJVv7aptQd0idI3G65tIkQMbuF/view?usp=drive_link
