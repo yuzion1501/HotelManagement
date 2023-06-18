@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0"/>
+<html>
+<head>
+	<meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style/payment.css' %}"/>
+
+	<title>Hotel</title>
+</head>
+<body>
+
+    <nav class="header">
+        <div class="logo"><h2>Horizon Hotel</h2></div>
+        <ul class="navigation_bar">
+            <li id ="return-home"><a>Home</a></li>
+
+        </ul>
+        <div class="login">
+        <p><span class="material-symbols-outlined" style="font-size: 2em;">login</span></p>
+        </div>
+
+    </nav>
+    <br>
+    <br>
+    <div class="title">
+        <p>About my team</p>
+    </div>
+    <br>
+    <br>
+    <style>  
+    .form-container{
+        width: 65%;
+        display:grid ; 
+        grid-template-columns: 1fr; 
+        grid-gap: 10px; 
+        justify-items: center;
+    }
+    </style>
+    <div class="form-container">
+        <div><h4>Nhóm 8</h4></div>
+        <div><h4>BÁO CÁO ĐỒ ÁN QUẢN LÝ KHÁCH SẠN </h4></div>
+        <div><h4>GIÁO VIÊN LÝ THUYẾT : Th.S. Bùi Tấn Lộc</h4></div>
+        <div><h4>GIÁO VIÊN HƯỚNG DẪN THỰC HÀNH : Th.S. Nguyễn Lê Hoàng Dũng</h4></div>
+        <br>
+        <br>
+        <div><h4>Danh sách thành viên </h4></div>
+        <div><h4>Lê Trung Sơn : 20123065</h4></div>
+        <div><h4>Phạm Hồng Ánh : 20120252</h4></div>
+        <div><h4>Luân Mã Khương : 20120515</h4></div>
+
+    </div>
+
+    <!-- {% for key,dict_value in data.items %}
+        {% for k,v in dict_value.items %}
+            {% if k == "id" %}
+            <h4> {{v}}</h4>
+            {% endif %}
+        {% endfor %}
+    {% endfor %} -->
+    <br>
+    {% load static %}
+    <script src="{% static 'script/payment.js' %}"></script>
+    </body>
+</html>

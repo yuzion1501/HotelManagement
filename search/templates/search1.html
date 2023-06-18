@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0"/>
+<html>
+<head>
+	<meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style/search.css' %}"/>
+
+	<title>Hotel</title>
+</head>
+<body>
+
+    <nav class="header">
+        <div class="logo"><h2>Horizon Hotel</h2></div>
+        <ul class="navigation_bar">
+            <li id ="return-home"><a>Home</a></li>
+            <!-- <li><a href="#">Room</a></li>
+            <li><a href="#">Serviecs</a></li>
+            <li><a href="#">About</a></li> -->
+        </ul>
+        <div class="login">
+        <p>Searching <span class="material-symbols-outlined" style="font-size: 2em;">search</span></p>
+        </div>
+
+    </nav>
+    <br>
+    <br>
+    <div class="title">
+        <p>Searching for room : {{type}}</p>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+        <div class = "header">Results </div>
+        {% for key,dict_value in data.items %}
+        <div class ="room" data-room-id={{key}}>
+            <div class = "element">
+            <img src="{% static 'img/room11.jpg' %}" alt="">
+            {% for k,v in dict_value.items %}
+            <p>{{k}} :{{v}} </p>
+            {% endfor %}
+            <p class="booking"><a style=" text-decoration: none; color : black">Booking Now <span class="material-symbols-outlined" style="font-size: 1.4em;">
+                open_in_new
+                </span></a></p>
+            </div>
+        </div>
+        {% endfor %}
+    <!-- <div class="container">
+        <div class = "header">Results </div>
+        {% if room == "A" %}
+        <div class = "element">
+            <img src="img/room11.jpg" alt="">
+            <p>Type : A</p>
+            <p>Price : 100.000 VND</p>
+            <p>Available : yes</p>
+            <p class="booking"><a style=" text-decoration: none; color : black">Booking Now <span class="material-symbols-outlined" style="font-size: 1.4em;">
+                open_in_new
+                </span></a></p>
+        </div>
+        {% endif %}
+
+        {% if room == "A" %}
+        <div class = "element">
+            <img src="img/room11.jpg" alt="">
+            <p>Type : A</p>
+            <p>Price : 100.000 VND</p>
+            <p>Available : yes</p>
+            <p class="booking"><a style=" text-decoration: none; color : black">Booking Now <span class="material-symbols-outlined" style="font-size: 1.4em;">
+                open_in_new
+                </span></a></p>
+        </div>
+        {% endif %}
+
+        {% if room == "B" %}
+        <div class = "element">
+            <img src="img/room11.jpg" alt="">
+            <p>Type : B</p>
+            <p>Price : 100.000 VND</p>
+            <p>Available : yes</p>
+            <p class="booking"><a style=" text-decoration: none; color : black">Booking Now <span class="material-symbols-outlined" style="font-size: 1.4em;">
+                open_in_new
+                </span></a></p>
+        </div>
+        {% endif %} -->
+
+        <dialog class="modal" id="modal">
+            <h2>Reservation Form</h2>
+            <form class="booking_form" action='reservation/' method="POST" onsubmit="showNotification()">
+                {% csrf_token %}
+                <label>Name <input type="text" name="name" style="margin:1.4em; width: 80%; font-size: 1.2em;" required></label>
+                <label>Email <input type="text" name="email" style="margin:1em; width: 80%; font-size: 1.2em;"></label>
+                <label>Phone <input type="text" name="phone" style="margin:1em; width: 80%; font-size: 1.2em;" required></label>
+                <label>ID card<input type="id-card" name="id-card" style="margin:0.6em; width: 70%; font-size: 1.2em;" required></label>
+                <label>Room ID :<input type="text" name="room-id" id="room-id-input" value = "" readonly 
+                    style="margin:1em; width: 10%; font-size: 1.2em;"></label>
+                <!-- <div>Room type : 
+                    <label style="padding: 2em;">A<input type="radio" name="check" id="A"></label>
+                    <label style="padding: 2em;">B<input type="radio" name="check" id ="B"></label>
+                    <label style="padding: 2em;">C<input type="radio" name="check" id = "C"></label>
+                </div>
+                <br>
+                <div>Guest : 
+                    <label style="padding: 2em;">Vietnamese<input type="radio" name="check" id="A"></label>
+                    <label style="padding: 2em;">Foreigner<input type="radio" name="check" id ="B"></label>
+                </div> -->
+                <p>Numbers of guests :</p>
+                <select name="numbers of guests">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+                <label>Number of nights : <input type="text" name="nights-count" style="margin:1.4em; width: 10%; font-size: 1.2em;" required></label>
+                <label>Date booking (example 6/7/2022) :<input type="text" name="date-booking" style="margin:1em; width: 30%; font-size: 1.2em;" required></label>
+                <!-- <label>Number of guests :<input type="text" name="guest-count" style="margin:1.4em; width: 10%; font-size: 1.2em;"></label> -->
+                <label >have foreigners<input type="radio" name="check"></label>
+                <div class="button">
+                    <button id = "booking-button" type="submit">submit </button>
+                    <a id ="close-form" style="text-decoration: none; color: black; text-align: center ; padding: 0.5em 0em">close</a>
+                </div>
+              
+            </form>
+        </dialog>
+
+        
+
+    </div>
+    <br>
+    {% load static %}
+    <script src="{% static 'script/search.js' %}"></script>
+    </body>
+</html>

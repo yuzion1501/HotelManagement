@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0"/>
+<html>
+<head>
+	<meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style/home.css' %}"/>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+</head>
+	<title>Hotel</title>
+</head>
+<body>
+
+    <nav class="header">
+        <div class="title"><h2>Horizon Hotel</h2></div>
+        <ul class="navigation_bar">
+            <li><a href="home/">Home</a></li>
+            <li><a href="home/">Room</a></li>
+            <li><a>Serviecs</a></li>
+            <li><a href="about/">About</a></li>
+        </ul>
+        <div class="login">
+        <p>Login/Register <span class="material-symbols-outlined" style="font-size: 2em;">login</span></p>
+        </div>
+
+    </nav>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div>
+        <form class ="search_bar" action='/search/'method="GET">
+            {% csrf_token %}
+            <label for="room"></label>
+            <input type="text" name="room">
+            <button type="submit"><span class="material-symbols-outlined">search</span></button>
+        </form>            
+    </div>
+    <br>    
+    <div class="slogan">
+        <p>Start your adventure </p>
+        <p> in our space <span style="font-size: 2em;" class="material-symbols-outlined">rocket_launch</span></p>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <div class = "header">List of Rooms </div>
+        {% for key,dict_value in data.items %}
+        <div class ="room" data-room-id={{key}}>
+            <img src="{% static 'img/room11.jpg' %}" alt="">
+            {% for k,v in dict_value.items %}
+            <p>{{k}} :{{v}} </p>
+            {% endfor %}
+            <p class="booking"><a style=" text-decoration: none; color : black">Booking Now <span class="material-symbols-outlined" style="font-size: 1.4em;">
+                open_in_new
+                </span></a></p>
+        </div>
+        {% endfor %}
+        
+        <!-- <div class ="room" data-room-id="A1">
+            <img src="{% static 'img/room11.jpg' %}" alt="">
+            <p>Type : A</p>
+            <p>Price : 100.000 VND</p>
+            <p>Available : yes</p>
+            <p class="booking"><a style=" text-decoration: none; color : black">Booking Now <span class="material-symbols-outlined" style="font-size: 1.4em;">
+                open_in_new
+                </span></a></p>
+        </div> -->
+        
+        <!-- {% load static %}
+        <div><img src="{% static 'img/room13.jpg' %}" alt="">
+            <p>Type : A</p>
+            <p>Price : 100.000 VND</p>
+            <p>Available : yes</p>
+            <p class="booking"><a style=" text-decoration: none; color : black">Booking Now <span class="material-symbols-outlined" style="font-size: 1.4em;">
+                open_in_new
+                </span></a></p>
+        </div>
+        
+        {% load static %}
+        <div><img src="{% static 'img/room14.jpg' %}" alt="">
+            <p>Type : A</p>
+            <p>Price : 100.000 VND</p>
+            <p>Room ID : 101</p>
+            <p>Available : yes</p>
+            <p class="booking"><a style=" text-decoration: none; color : black">Booking Now <span class="material-symbols-outlined" style="font-size: 1.4em;">
+                open_in_new
+                </span></a></p>
+        </div>
+
+        {% load static %}
+        <div><img src="{% static 'img/room15.jpg' %}" alt="">
+            <p>Type : A</p>
+            <p>Price : 100.000 VND</p>
+            <p>Available : yes</p>
+            <p class="booking"><a style=" text-decoration: none; color : black">Booking Now <span class="material-symbols-outlined" style="font-size: 1.4em;">
+                open_in_new
+                </span></a></p>
+        </div> -->
+
+    </div>
+    <br>
+    <br>
+    <!-- <div class="container">
+        <div class = "header">List of Serviecs </div>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+    </div>
+    <br>
+    <br> -->
+
+    <dialog class="modal" id="modal">
+        <h2>Reservation Form</h2>
+        <form class="booking_form" action='reservation/' method="POST" onsubmit="showNotification()">
+            {% csrf_token %}
+            <label>Name <input type="text" name="name" style="margin:1.4em; width: 80%; font-size: 1.2em;" required></label>
+            <label>Email <input type="text" name="email" style="margin:1em; width: 80%; font-size: 1.2em;"></label>
+            <label>Phone <input type="text" name="phone" style="margin:1em; width: 80%; font-size: 1.2em;" required></label>
+            <label>ID card<input type="id-card" name="id-card" style="margin:0.6em; width: 70%; font-size: 1.2em;" required></label>
+            <label>Room ID :<input type="text" name="room-id" id="room-id-input" value = "" readonly 
+                style="margin:1em; width: 10%; font-size: 1.2em;"></label>
+            <!-- <div>Room type : 
+                <label style="padding: 2em;">A<input type="radio" name="check" id="A"></label>
+                <label style="padding: 2em;">B<input type="radio" name="check" id ="B"></label>
+                <label style="padding: 2em;">C<input type="radio" name="check" id = "C"></label>
+            </div>
+            <br>
+            <div>Guest : 
+                <label style="padding: 2em;">Vietnamese<input type="radio" name="check" id="A"></label>
+                <label style="padding: 2em;">Foreigner<input type="radio" name="check" id ="B"></label>
+            </div> -->
+            <p>Numbers of guests :</p>
+            <select name="numbers of guests">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            <label>Number of nights : <input type="text" name="nights-count" style="margin:1.4em; width: 10%; font-size: 1.2em;" required></label>
+            <label>Date booking (example 6/7/2022) :<input type="text" name="date-booking" style="margin:1em; width: 30%; font-size: 1.2em;" required></label>
+            <!-- <label>Number of guests :<input type="text" name="guest-count" style="margin:1.4em; width: 10%; font-size: 1.2em;"></label> -->
+            <label >have foreigners<input type="radio" name="check"></label>
+          <div class="button">
+            <button id = "booking-button" type="submit">submit </button>
+            <a id ="close-form" href="home/" style="text-decoration: none; color: black; text-align: center ; padding: 0.5em 0em">close</a>
+          </div>
+          
+        </form>
+    </dialog>
+
+    <dialog class="login_dialog">
+        <h2>Login</h2>
+        <form class="login_form" action='guest/' method="POST" >
+            {% csrf_token %}
+            <label>Name <input type="text" name="name" style="margin:1.4em; width: 80%; font-size: 1.2em;"></label>
+            <!-- <label>Email <input type="text" name="email" style="margin:1em; width: 80%; font-size: 1.2em;"></label> -->
+            <label>Phone <input type="text" name="phone" style="margin:1em; width: 80%; font-size: 1.2em;"></label>
+            <br>
+        <div class ="button">
+            <button id="login_button" type="submit">Login</button>
+            <div id="admin_button">Login as admin </div>
+        </div>
+            <div id="close_button">Close</div>
+
+            <!-- <a href="home/">close</a> -->
+
+        </form>
+    </dialog>
+
+    <dialog class="admin-dialog">
+        <h2>Login</h2>
+        <form class="admin-dialog" action='hotel_manager/' method="POST" >
+            {% csrf_token %}
+            <label>Admin ID  <input type="text" name="admin-id" style="margin:1.4em; width: 80%; font-size: 1.2em;"></label>
+            <label>Key <input type="text" name="password" style="margin-left: 4em; width: 80%; font-size: 1.2em;"></label>
+            <!-- <label>Phone <input type="text" name="phone" style="margin:1em; width: 80%; font-size: 1.2em;"></label> -->
+            <br>
+        <div class ="button">
+            <button id="admin-login-button" type="submit">Login</button>
+            <button id ="close-login"><a href="home/" style="text-decoration: none;">close</a></button>
+            <!-- <div id ="close-login"><a  href="home/" style="text-decoration: none; text-align: center ; padding: 0.5em 0em"">close</a></div> -->
+        </div>
+        </form>
+    </dialog>
+    
+
+
+    <!-- <footer class="foot">
+        <p>About : </p>
+    </footer> -->
+    <script src="{% static 'script/home.js' %}"></script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0"/>
+<html>
+<head>
+	<meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'style/hotel_manager.css' %}"/>
+
+	<title>Hotel</title>
+</head>
+<body>
+
+    <nav class="header">
+        <div class="logo"><h2>Horizon Hotel</h2></div>
+        <ul class="navigation_bar">
+            <li id ="return-home"><a>Home</a></li>
+            <li><a href="policy/">Change</a></li>
+            <li><a href="report/">Report</a></li>
+        </ul>
+        <div class="login">
+        <p>Welcome admin {{name}} <span class="material-symbols-outlined" style="font-size: 2em;">person</span></p>
+        </div>
+
+    </nav>
+    <br>
+    <br>
+    <div class="title">
+        <p>Admin site </p>
+    </div>
+    <br>
+    <br>
+    {% for key,dict_value in data.items %}
+    <div class="form-container">
+        
+        <form class="handle_booking_form" action='handle_form/' method="POST">
+            {% csrf_token %}
+            <h2>Form </h2>
+            {% for k,v in dict_value.items %}
+                {% if k == "id" %}
+                <label>Booking Form ID :<input type="text" name="booking-form-id"  value = {{v}} readonly></label>
+                {% else %}
+                <h4>{{ k }} : {{ v }}</h4>
+                {% endif %}
+            {% endfor %}
+            <div id = "accept-form">
+            <p style="font-size: 1em;">Accept this booking form </p>
+            <select name="accept" style="font-size: 1em">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+            <button id="button-handle-form"type="submit">submit</button>
+            </div>
+        </form>
+    </div>
+    {% endfor %}
+
+    <!-- {% for key,dict_value in data.items %}
+        {% for k,v in dict_value.items %}
+            {% if k == "id" %}
+            <h4> {{v}}</h4>
+            {% endif %}
+        {% endfor %}
+    {% endfor %} -->
+    <br>
+    {% load static %}
+    <script src="{% static 'script/hotel_manager.js' %}"></script>
+    </body>
+</html>
