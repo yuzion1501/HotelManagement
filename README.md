@@ -33,6 +33,7 @@
 
 ## How to run
 > Run script in `sql_script.sql` to create database on your device.<br>
+> In folder hotel_database, in database_connection.py,modify the "server_name", "username" and "password" variable to correspond with your SQL Server information <br>
 Clone this repo or download as zip and unzip it. Run Django server with `manage.py` (make sure you have already set Django up on your device).
 ---
 <div style="page-break-after: always"></div>
