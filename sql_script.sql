@@ -1,4 +1,7 @@
-﻿use HotelManagement
+/****************** Tạo database *********************/
+CREATE DATABASE HotelManagement;
+go
+use HotelManagement
 go
 
 /****************** Tạo bảng *********************/
