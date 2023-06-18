@@ -37,5 +37,10 @@ Clone this repo or download as zip and unzip it. Run Django server with `manage.
 ---
 <div style="page-break-after: always"></div>
 
+## Current status
+> We can use  this application for hotel advance booking and have an acceptance by a manager. Can choose how long you need to use the room. Search for the room you need. And for the manager, you can change the rules of your company, submit bill for customers.
+---
+<div style="page-break-after: always"></div>
+
 ## Demo
 > [link]
